@@ -7,7 +7,7 @@ const EditTodo = ({ todo }) => {
     e.preventDefault();
     try {
       const body = { description };
-      const response = await fetch(`http://localhost:5000/todos/${todo.todo_id}`, {
+      await fetch(`http://localhost:5000/todos/${todo.todo_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -29,11 +29,15 @@ const EditTodo = ({ todo }) => {
         Edit
       </button>
 
-      <div class='modal' id={`id${todo.todo_id}`} onClick={() => setdescription(todo.description)}>
-        <div class='modal-dialog'>
-          <div class='modal-content'>
-            <div class='modal-header'>
-              <h4 class='modal-title'>Edit Your Todo</h4>
+      <div
+        className='modal'
+        id={`id${todo.todo_id}`}
+        onClick={() => setdescription(todo.description)}
+      >
+        <div className='modal-dialog'>
+          <div className='modal-content'>
+            <div className='modal-header'>
+              <h4 className='modal-title'>Edit Your Todo</h4>
               <button
                 type='button'
                 class='close'
